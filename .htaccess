@@ -1,0 +1,106 @@
+# ==========================================================================
+#  Cabinet Marthelot - https://www.cabinet-marthelot.com
+#  Conception : Tyrolium · Hébergement : SolidServ
+# ==========================================================================
+
+Options -Indexes -MultiViews
+AddDefaultCharset UTF-8
+DirectoryIndex index.html
+
+# --------------------------------------------------------------------------
+#  Page d'erreur
+# --------------------------------------------------------------------------
+ErrorDocument 404 /404.html
+
+# --------------------------------------------------------------------------
+#  Redirections : HTTPS + www, et URL propre pour l'accueil
+# --------------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Fichiers et dossiers cachés (.git, .claude, .DS_Store...) et fichiers de travail : introuvables
+  RewriteCond %{REQUEST_URI} !^/\.well-known/
+  RewriteRule (^|/)\. - [R=404,L]
+  RewriteRule ^README\.md$ - [R=404,L]
+
+  # http -> https et cabinet-marthelot.com -> www.cabinet-marthelot.com (une seule redirection)
+  # (sauf requêtes internes, ex. affichage de la page 404)
+  RewriteCond %{ENV:REDIRECT_STATUS} ^$
+  RewriteCond %{HTTPS} off [OR]
+  RewriteCond %{HTTP_HOST} !^www\. [NC]
+  RewriteCond %{HTTP_HOST} ^(?:www\.)?(.+)$ [NC]
+  RewriteRule ^ https://www.%1%{REQUEST_URI} [R=301,L,NE]
+
+  # /index.html -> /  (évite le contenu dupliqué)
+  RewriteCond %{THE_REQUEST} \s/index\.html[\s?] [NC]
+  RewriteRule ^index\.html$ https://%{HTTP_HOST}/ [R=301,L]
+</IfModule>
+
+# Fichiers de travail à ne pas exposer
+<FilesMatch "\.(bak|log|sh|py|sql)$">
+  Require all denied
+</FilesMatch>
+
+# --------------------------------------------------------------------------
+#  Types MIME
+# --------------------------------------------------------------------------
+<IfModule mod_mime.c>
+  AddType application/manifest+json  webmanifest
+  AddType image/webp                 webp
+  AddType image/svg+xml              svg
+  AddType text/plain                 txt
+  AddCharset UTF-8 .html .css .js .txt .xml .json .webmanifest
+</IfModule>
+
+# --------------------------------------------------------------------------
+#  En-têtes de sécurité
+# --------------------------------------------------------------------------
+<IfModule mod_headers.c>
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains" "expr=%{HTTPS} == 'on'"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "DENY"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; form-action 'self' mailto:; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests"
+  Header unset X-Powered-By
+  Header always unset X-Powered-By
+</IfModule>
+ServerSignature Off
+
+# --------------------------------------------------------------------------
+#  Compression
+# --------------------------------------------------------------------------
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/css text/plain text/xml application/javascript application/json application/manifest+json application/ld+json application/xml image/svg+xml
+</IfModule>
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/javascript application/json application/manifest+json application/ld+json application/xml image/svg+xml
+</IfModule>
+
+# --------------------------------------------------------------------------
+#  Cache navigateur
+#  CSS/JS : 1 semaine (pas de versionnage des fichiers) · images : 1 mois
+# --------------------------------------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault                          "access plus 1 week"
+  ExpiresByType text/html                 "access plus 0 seconds"
+  ExpiresByType text/plain                "access plus 1 day"
+  ExpiresByType application/xml           "access plus 1 day"
+  ExpiresByType text/xml                  "access plus 1 day"
+  ExpiresByType application/manifest+json "access plus 1 week"
+  ExpiresByType text/css                  "access plus 1 week"
+  ExpiresByType application/javascript    "access plus 1 week"
+  ExpiresByType text/javascript           "access plus 1 week"
+  ExpiresByType image/png                 "access plus 1 month"
+  ExpiresByType image/jpeg                "access plus 1 month"
+  ExpiresByType image/webp                "access plus 1 month"
+  ExpiresByType image/svg+xml             "access plus 1 month"
+  ExpiresByType image/x-icon              "access plus 1 month"
+</IfModule>
+<IfModule mod_headers.c>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>
