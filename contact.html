@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact — Cabinet Marthelot</title>
+  <meta name="description" content="Contactez le Cabinet Marthelot pour un diagnostic offert et sans engagement de votre entreprise.">
+  <meta property="og:title" content="Contact — Cabinet Marthelot">
+  <meta property="og:description" content="Contactez le Cabinet Marthelot pour un diagnostic offert et sans engagement de votre entreprise.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/logo+typo+fond.jpeg">
+  <link rel="icon" type="image/png" href="assets/img/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Cabinet Marthelot — accueil">
+        <img src="assets/img/marthelot-mark.png" alt="" width="42" height="42">
+        <span class="brand-text"><small>CABINET</small><strong>MARTHELOT</strong></span>
+      </a>
+      <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav" id="menu" aria-label="Navigation principale">
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="formule.html">La formule</a></li>
+          <li><a href="contact.html" aria-current="page">Contact</a></li>
+          <li><a class="btn btn-navy" href="contact.html">Prendre rendez-vous</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <section class="page-hero">
+      <img class="hero-mark" src="assets/img/marthelot-mark-white.png" alt="">
+      <div class="container" style="position:relative">
+        <nav class="breadcrumb" aria-label="Fil d'Ariane"><a href="index.html">Accueil</a> / Contact</nav>
+        <p class="eyebrow">Contact</p>
+        <h1>Parlons de votre entreprise.</h1>
+        <p class="lead">Un doute sur votre structure, un projet à lancer ou simplement besoin d'un point ? Écrivez-nous : nous revenons vers vous rapidement pour convenir d'un rendez-vous.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container contact-grid">
+        <aside class="contact-info reveal">
+          <p class="eyebrow">Nos coordonnées</p>
+          <div class="info-block">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
+            <div><h3>E-mail</h3><a href="mailto:contact@cabinet-marthelot.com">contact@cabinet-marthelot.com</a></div>
+          </div>
+          <div class="info-block">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></div>
+            <div><h3>Téléphone</h3><a href="tel:+33767008972">07 67 00 89 72</a></div>
+          </div>
+          <div class="info-block">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+            <div><h3>Siège social</h3><p>173 rue de Courcelles<br>75017 Paris</p></div>
+          </div>
+          <div class="info-block">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></div>
+            <div><h3>Rendez-vous</h3><p>Sur rendez-vous, en visioconférence ou en présentiel</p></div>
+          </div>
+          <div class="offer-box">
+            <strong>Diagnostic offert</strong>
+            <p>Le premier rendez-vous est gratuit et sans engagement. Il nous permet de comprendre votre situation et de vous remettre une proposition adaptée.</p>
+          </div>
+        </aside>
+
+        <div class="form-card reveal">
+          <h2>Envoyez-nous un message</h2>
+          <p style="color:var(--muted);margin:0">Les champs marqués d'un <span style="color:var(--cyan-600)">*</span> sont obligatoires.</p>
+          <form id="contact-form" class="form-grid" data-to="contact@cabinet-marthelot.com" novalidate>
+            <div class="field">
+              <label for="nom">Nom et prénom <span class="req">*</span></label>
+              <input id="nom" name="nom" type="text" autocomplete="name" required>
+              <span class="error">Merci d'indiquer votre nom.</span>
+            </div>
+            <div class="field">
+              <label for="societe">Société</label>
+              <input id="societe" name="societe" type="text" autocomplete="organization">
+            </div>
+            <div class="field">
+              <label for="email">E-mail <span class="req">*</span></label>
+              <input id="email" name="email" type="email" autocomplete="email" required>
+              <span class="error">Merci d'indiquer une adresse e-mail valide.</span>
+            </div>
+            <div class="field">
+              <label for="telephone">Téléphone</label>
+              <input id="telephone" name="telephone" type="tel" autocomplete="tel">
+            </div>
+            <div class="field">
+              <label for="structure">Votre structure</label>
+              <select id="structure" name="structure">
+                <option value="">Sélectionner</option>
+                <option>Projet de création</option>
+                <option>Micro-entreprise</option>
+                <option>TPE (moins de 10 salariés)</option>
+                <option>PME (10 à 249 salariés)</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="sujet">Objet de votre demande <span class="req">*</span></label>
+              <select id="sujet" name="sujet" required>
+                <option value="Diagnostic">Diagnostic offert</option>
+                <option value="Formule">Informations sur la formule</option>
+                <option value="Communication">Communication</option>
+                <option value="Gestion">Gestion administrative &amp; financière</option>
+                <option value="Stratégie">Entrepreneuriat &amp; stratégie</option>
+                <option value="Autre">Autre demande</option>
+              </select>
+            </div>
+            <div class="field full">
+              <label for="message">Votre message <span class="req">*</span></label>
+              <textarea id="message" name="message" required placeholder="Présentez brièvement votre activité et votre besoin."></textarea>
+              <span class="error">Merci de préciser votre demande.</span>
+            </div>
+            <label class="consent">
+              <input type="checkbox" name="consentement" required>
+              <span>J'accepte que les informations saisies soient utilisées par le Cabinet Marthelot pour répondre à ma demande. Voir notre <a href="mentions-legales.html#donnees">politique de protection des données</a>.</span>
+            </label>
+            <div class="form-status" role="status">Votre messagerie va s'ouvrir avec votre demande pré-remplie. Si rien ne se passe, écrivez-nous directement à <a href="mailto:contact@cabinet-marthelot.com">contact@cabinet-marthelot.com</a>.</div>
+            <div class="form-actions">
+              <small>Réponse sous 48 heures ouvrées.</small>
+              <button class="btn btn-navy" type="submit">Envoyer ma demande
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <a class="brand" href="index.html">
+            <img src="assets/img/marthelot-mark-white.png" alt="" width="42" height="42">
+            <span class="brand-text"><small>CABINET</small><strong>MARTHELOT</strong></span>
+          </a>
+          <p>Cabinet de conseil et d'accompagnement des micro-entreprises, TPE et PME. Une formule unique pour structurer, piloter et développer votre entreprise.</p>
+        </div>
+        <div>
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="formule.html">La formule</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="mentions-legales.html">Mentions légales</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Expertises</h4>
+          <ul>
+            <li><a href="formule.html#communication">Communication</a></li>
+            <li><a href="formule.html#gestion">Gestion administrative &amp; financière</a></li>
+            <li><a href="formule.html#strategie">Entrepreneuriat &amp; stratégie</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:contact@cabinet-marthelot.com">contact@cabinet-marthelot.com</a></li>
+            <li><a href="tel:+33767008972">07 67 00 89 72</a></li>
+            <li>173 rue de Courcelles<br>75017 Paris</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-legal">
+        <span>© <span data-year>2026</span> Cabinet Marthelot SAS · <span class="ids">SIRET 107 155 475 00018</span></span>
+        <div class="credits">
+          <a class="credit" href="https://tyrolium.fr" target="_blank" rel="noopener"><img src="assets/img/tyrolium.png" alt="">Conçu par <strong>Tyrolium</strong></a>
+          <a class="credit" href="https://solidserv.fr" target="_blank" rel="noopener"><img src="assets/img/solidserv.png" alt="">Hébergé par <strong>SolidServ</strong></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
