@@ -11,13 +11,41 @@
       var open = document.body.classList.toggle("nav-open");
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
     });
+    function closeNav() {
+      document.body.classList.remove("nav-open");
+      toggle.setAttribute("aria-expanded", "false");
+    }
     document.querySelectorAll(".main-nav a").forEach(function (link) {
-      link.addEventListener("click", function () {
-        document.body.classList.remove("nav-open");
-        toggle.setAttribute("aria-expanded", "false");
-      });
+      link.addEventListener("click", closeNav);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && document.body.classList.contains("nav-open")) {
+        closeNav();
+        toggle.focus();
+      }
     });
   }
+
+  // Carrousels tactiles : indicateur de position sous chaque liste
+  document.querySelectorAll(".swipe").forEach(function (track) {
+    var items = track.children;
+    if (items.length < 2) return;
+    var dots = document.createElement("div");
+    dots.className = "swipe-dots";
+    dots.setAttribute("aria-hidden", "true");
+    for (var i = 0; i < items.length; i++) dots.appendChild(document.createElement("span"));
+    track.parentNode.insertBefore(dots, track.nextSibling);
+
+    function update() {
+      var max = track.scrollWidth - track.clientWidth;
+      var index = max > 0 ? Math.round((track.scrollLeft / max) * (items.length - 1)) : 0;
+      for (var j = 0; j < dots.children.length; j++) {
+        dots.children[j].classList.toggle("is-active", j === index);
+      }
+    }
+    track.addEventListener("scroll", update, { passive: true });
+    update();
+  });
 
   // Ombre de l'en-tête au défilement
   var header = document.querySelector(".site-header");
