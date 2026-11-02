@@ -71,6 +71,29 @@
     reveals.forEach(function (el) { el.classList.add("is-visible"); });
   }
 
+  // Bannière : événement dans les 7 prochains jours (données servies par banniere.php)
+  if (window.fetch) {
+    fetch("/banniere.php", { headers: { Accept: "application/json" } })
+      .then(function (res) { return res.ok ? res.json() : null; })
+      .then(function (ev) {
+        if (!ev) return;
+        var bar = document.createElement("a");
+        bar.className = "event-banner";
+        bar.href = "/evenements.php#ev-" + encodeURIComponent(ev.id);
+        var label = document.createElement("strong");
+        label.textContent = "Événement";
+        var text = document.createElement("span");
+        text.textContent = ev.titre + " · " + ev.date + (ev.lieu ? " · " + ev.lieu : "");
+        var cta = document.createElement("em");
+        cta.textContent = "S'inscrire →";
+        bar.appendChild(label);
+        bar.appendChild(text);
+        bar.appendChild(cta);
+        document.body.insertBefore(bar, document.body.firstChild);
+      })
+      .catch(function () {});
+  }
+
   // Année courante
   document.querySelectorAll("[data-year]").forEach(function (el) {
     el.textContent = new Date().getFullYear();

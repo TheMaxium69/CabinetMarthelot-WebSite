@@ -5,7 +5,7 @@
 
 Options -Indexes -MultiViews
 AddDefaultCharset UTF-8
-DirectoryIndex index.html
+DirectoryIndex index.html index.php
 
 # --------------------------------------------------------------------------
 #  Page d'erreur
@@ -22,6 +22,8 @@ ErrorDocument 404 /404.html
   RewriteCond %{REQUEST_URI} !^/\.well-known/
   RewriteRule (^|/)\. - [R=404,L]
   RewriteRule ^README\.md$ - [R=404,L]
+  # Données des événements et code PHP interne : jamais servis directement
+  RewriteRule ^(data|inc)(/|$) - [R=404,L]
 
   # http -> https et cabinet-marthelot.com -> www.cabinet-marthelot.com (une seule redirection)
   # (sauf requêtes internes, ex. affichage de la page 404)

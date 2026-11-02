@@ -1,3 +1,9 @@
 .claude/launch.json
 .DS_Store
 /.idea
+
+# Données des événements (inscriptions)
+/data/*.json
+
+# Configuration locale (mot de passe du panel)
+/inc/db.php

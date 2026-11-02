@@ -688,3 +688,36 @@ p { margin: 0 0 1em; }
   .js .reveal { opacity: 1; transform: none; transition: none; }
   * { transition-duration: 0s !important; }
 }
+
+/* ---------- Événements ---------- */
+.event-banner {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px 12px;
+  padding: 10px var(--gutter); background: var(--cyan); color: var(--navy-900);
+  font-size: .88rem; text-align: center; text-decoration: none;
+}
+.event-banner:hover { background: #2dbad8; color: var(--navy-900); }
+.event-banner strong { text-transform: uppercase; letter-spacing: .12em; font-size: .72rem; background: var(--navy); color: #fff; padding: 3px 8px; border-radius: 3px; }
+.event-banner em { font-style: normal; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+
+.event-alert { margin-bottom: 32px; }
+.form-status.is-error { background: #fdecea; color: #b42318; }
+.event-list { display: grid; gap: 18px; }
+.event-card { background: #fff; border: 1px solid var(--line); border-left: 3px solid var(--cyan); border-radius: var(--radius); padding: 22px 18px; box-shadow: var(--shadow); }
+.event-card h3 { font-size: 1.3rem; margin-bottom: .3em; }
+.event-date { color: var(--cyan-600); font-weight: 600; font-size: .86rem; margin: 0 0 6px; }
+.event-date::first-letter { text-transform: uppercase; }
+.event-place { color: var(--muted); font-size: .92rem; margin: 0 0 10px; }
+.event-desc { margin: 0 0 14px; }
+.event-card.is-past { border-left-color: var(--line); box-shadow: none; }
+.event-card.is-past h3 { color: var(--navy-700); font-size: 1.1rem; }
+.event-card.is-past .event-date { color: var(--muted); }
+.event-signup summary { list-style: none; display: inline-flex; }
+.event-signup summary::-webkit-details-marker { display: none; }
+.event-signup[open] summary { display: none; }
+.event-signup .form-grid { margin-top: 8px; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+@media (min-width: 768px) {
+  .event-card { padding: 28px 32px; }
+  .event-signup .form-grid { grid-template-columns: 1fr 1fr; }
+  .event-banner { font-size: .92rem; }
+}
